@@ -2,10 +2,20 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Middleware\RoleMiddleware;
+use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::middleware(['auth'])->get('/dashboard', function() {
+    return view('dashboard');
+})->name('dashboard');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -18,3 +28,6 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
+require __DIR__.'/customer.php';
+
