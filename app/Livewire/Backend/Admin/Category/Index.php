@@ -5,15 +5,20 @@ namespace App\Livewire\Backend\Admin\Category;
 use Livewire\Component;
 use App\Models\Category;
 use Livewire\WithPagination;
+
 class Index extends Component
 {
      use WithPagination;
 
-
     public function toggleStatus($id)
     {
         $category = Category::findOrFail($id);
-        $category->update(['status' => !$category->status]);
+        // 'status' এর বদলে 'active' হবে
+        $category->update([
+            'active' => !$category->active 
+        ]);
+        
+        session()->flash('message', 'Status updated successfully');
     }
 
     public function delete($id)
@@ -21,7 +26,6 @@ class Index extends Component
         Category::findOrFail($id)->delete();
         session()->flash('message', 'Category deleted successfully');
     }
-
 
     public function render()
     {

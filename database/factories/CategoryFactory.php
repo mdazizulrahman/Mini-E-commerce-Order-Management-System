@@ -18,6 +18,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
+            'email' => $this->faker->unique()->safeEmail(),
             'name' => $this->faker->word(),
             'slug' => $this->faker->unique()->slug(),
             'active' => $this->faker->boolean(90),

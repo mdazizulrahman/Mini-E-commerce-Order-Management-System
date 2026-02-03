@@ -9,17 +9,18 @@ class CategoriesSeeder extends Seeder
 {
     public function run(): void
     {
-        Category::create([
+        Category::updateOrCreate([
             'name' => 'Electronics',
             'slug' => 'electronics',
+        ], [
             'active' => true,
         ]);
-        Category::create([
+        Category::updateOrCreate([
             'name' => 'Books',
             'slug' => 'books',
             'active' => true,
         ]);
-        Category::create([
+        Category::updateOrCreate([
             'name' => 'Clothing',
             'slug' => 'clothing',
             'active' => true,

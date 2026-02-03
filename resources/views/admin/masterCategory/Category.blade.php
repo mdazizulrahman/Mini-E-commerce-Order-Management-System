@@ -3,11 +3,12 @@
 @section('content')
 @switch(Route::currentRouteName())
     @case('admin.category.create')
-        <h1>Create Category</h1>
+         <livewire:backend.admin.category.create />
+        
         @break
-    @case('admin.category.edit')
-        <h1>Edit Category</h1>
-        @break
+   @case('admin.category.edit')
+    <livewire:backend.admin.category.edit :id="request()->route('id')" />
+@break
     @default
     <livewire:backend.admin.category.index />
   @break    

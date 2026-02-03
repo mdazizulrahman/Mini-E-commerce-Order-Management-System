@@ -4,7 +4,7 @@
 <div class="p-6">
     <div class="flex justify-between mb-4">
         <h2 class="text-xl font-bold">Categories</h2>
-        <a href=""
+        <a href="{{ route('admin.category.create') }}"
            class="bg-blue-600 text-white px-4 py-2 rounded">
            + Add Category
         </a>
@@ -22,29 +22,27 @@
             <th>Action</th>
         </tr>
 
-        @foreach($categories as $cat)
-        <tr class="border">
-            <td>{{ $loop->iteration }}</td>
-            <td>{{ $cat->name }}</td>
-            <td>
-                <button wire:click="toggleStatus({{ $cat->id }})"
-                    class="px-2 py-1 rounded text-white
-                    {{ $cat->status ? 'bg-green-500' : 'bg-red-500' }}">
-                    {{ $cat->status ? 'Active' : 'Inactive' }}
-                </button>
-            </td>
-            <td class="space-x-2">
-                <a href="" 
-                   class="text-blue-600">Edit</a>
-{{-- {{ route('admin.categories.edit',$cat->id) }} --}}
-                <button wire:click="delete({{ $cat->id }})"
-                        class="text-red-600"
-                        onclick="confirm('Delete?') || event.stopImmediatePropagation()">
-                        Delete
-                </button>
-            </td>
-        </tr>
-        @endforeach
+@foreach($categories as $cat)
+<tr class="border">
+    <td>{{ $loop->iteration }}</td>
+    <td>{{ $cat->name }}</td>
+    <td>
+        <button wire:click="toggleStatus({{ $cat->id }})" 
+                class="px-2 py-1 rounded text-white {{ $cat->active ? 'bg-green-500' : 'bg-red-500' }}">
+            {{ $cat->active ? 'Active' : 'Inactive' }}
+        </button>
+    </td>
+    <td class="space-x-2">
+        <a href="{{ route('admin.category.edit', $cat->id) }}" class="text-blue-600">Edit</a>
+        
+        <button wire:click="delete({{ $cat->id }})"
+                class="text-red-600 hover:text-red-800 rounded px-2 py-1"
+                onclick="confirm('Are you sure?') || event.stopImmediatePropagation()">
+            Delete
+        </button>
+    </td>
+</tr>
+@endforeach
     </table>
 
     <div class="mt-4">{{ $categories->links() }}</div>
