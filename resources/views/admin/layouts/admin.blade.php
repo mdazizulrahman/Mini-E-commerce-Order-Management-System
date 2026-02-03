@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,19 +33,24 @@
                     Dashboard
                 </a>
 
-                <a href="{{ route('admin.users.index') }}"
+                <a href=""
                    class="block py-2 px-3 rounded-lg hover:bg-gray-700">
                     Users
                 </a>
-
-                <a href="{{ route('admin.products.index') }}"
+                
+                <a href="{{ route('admin.category.index') }}"
                    class="block py-2 px-3 rounded-lg hover:bg-gray-700">
-                    Products
+                    Category Management
                 </a>
 
-                <a href="{{ route('admin.orders.index') }}"
+                <a href=" "
                    class="block py-2 px-3 rounded-lg hover:bg-gray-700">
-                    Orders
+                    Product Management
+                </a>
+
+                <a href=""
+                   class="block py-2 px-3 rounded-lg hover:bg-gray-700">
+                      Order Management
                 </a>
             </nav>
 

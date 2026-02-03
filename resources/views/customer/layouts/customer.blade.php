@@ -2,84 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title', 'Admin Panel')</title>
-
-    @vite('resources/css/app.css')
+    <title>customer Dashboard - @yield('title')</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-100">
 
-    <div class="flex">
+<div class="min-h-screen flex">
 
-        <!-- Sidebar -->
-        <aside class="w-64 bg-gray-900 text-white min-h-screen flex flex-col">
-     <div class=" p-4 shadow rounded text-center">
-    <div class="">Profile</div>
-    <img src="https://via.placeholder.com/150"
-         alt="Logo"
-         class="mx-auto rounded-full object-cover">
-</div>
+    {{-- Sidebar --}}
+    <aside class="w-64 bg-white shadow-lg p-5">
+        <h2 class="font-bold text-xl mb-5">User Panel</h2>
 
+        <ul class="space-y-3">
 
-            <div class="px-6 py-4 text-2xl font-bold border-b border-gray-700">
-                Admin Panel
-            </div>
-
-            <nav class="flex-1 px-4 py-6 space-y-3">
-                <a href="{{ route('admin.dashboard') }}"
-                   class="block py-2 px-3 rounded-lg hover:bg-gray-700 {{ request()->is('admin/dashboard') ? 'bg-gray-700' : '' }}">
+            <li>
+                <a href="{{ route('user.dashboard') }}"
+                   class="block p-2 rounded
+                    {{ request()->routeIs('user.dashboard') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
                     Dashboard
                 </a>
+            </li>
 
-                <a href="{{ route('admin.users.index') }}"
-                   class="block py-2 px-3 rounded-lg hover:bg-gray-700">
-                    Users
+            <li>
+                <a href="{{ route('user.profile') }}"
+                   class="block p-2 rounded
+                    {{ request()->routeIs('user.profile') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
+                    Profile
                 </a>
+            </li>
 
-                <a href="{{ route('admin.products.index') }}"
-                   class="block py-2 px-3 rounded-lg hover:bg-gray-700">
-                    Products
+            <li>
+                <a href="{{ route('user.orders') }}"
+                   class="block p-2 rounded
+                    {{ request()->routeIs('user.orders') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
+                    My Orders
                 </a>
+            </li>
 
-                <a href="{{ route('admin.orders.index') }}"
-                   class="block py-2 px-3 rounded-lg hover:bg-gray-700">
-                    Orders
+            <li>
+                <a href="{{ route('user.wishlist') }}"
+                   class="block p-2 rounded
+                    {{ request()->routeIs('user.wishlist') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
+                    Wishlist
                 </a>
-            </nav>
+            </li>
 
-            <div class="px-4 py-4 border-t border-gray-700">
+            <li>
+                <a href="{{ route('user.reviews') }}"
+                   class="block p-2 rounded
+                    {{ request()->routeIs('user.reviews') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
+                    My Reviews
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('user.address') }}"
+                   class="block p-2 rounded
+                    {{ request()->routeIs('user.address') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
+                    Address Book
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('user.notifications') }}"
+                   class="block p-2 rounded
+                    {{ request()->routeIs('user.notifications') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
+                    Notifications
+                </a>
+            </li>
+
+            <li class="pt-4">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button class="w-full py-2 rounded-lg bg-red-600 hover:bg-red-700">Logout</button>
+                    <button class="w-full text-start p-2 text-red-600 font-semibold hover:bg-red-100 rounded">
+                        Logout
+                    </button>
                 </form>
-            </div>
-        </aside>
+            </li>
 
-        <!-- Main Content -->
-        <main class="flex-1">
+        </ul>
+    </aside>
 
-            <!-- Topbar -->
-            <header class="flex justify-between items-center bg-white shadow px-6 py-4">
-                <h1 class="text-xl font-semibold">@yield('page_title')</h1>
+    {{-- Main Content --}}
+    <main class="flex-1 p-8">
+        @yield('content')
+    </main>
 
-                <div class="flex items-center space-x-4">
-                    <span>{{ auth()->user()->name ?? 'Admin' }}</span>
-                    <img class="w-10 h-10 rounded-full"
-                         src="https://ui-avatars.com/api/?name={{ auth()->user()->name ?? 'Admin' }}"
-                         alt="">
-                </div>
-            </header>
+</div>
 
-            <!-- Page Content -->
-            <div class="p-6">
-                @yield('content')
-            </div>
-
-        </main>
-
-    </div>
-
-    @livewireScripts
+@livewireScripts
 </body>
 </html>
