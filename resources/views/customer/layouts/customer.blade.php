@@ -18,15 +18,15 @@
         <ul class="space-y-3">
 
             <li>
-                <a href="{{ route('user.dashboard') }}"
+                <a href="{{ route('customer.dashboard') }}"
                    class="block p-2 rounded
-                    {{ request()->routeIs('user.dashboard') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
+                    {{ request()->routeIs('customer.dashboard') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
                     Dashboard
                 </a>
             </li>
 
             <li>
-                <a href="{{ route('user.profile') }}"
+                <a href=""
                    class="block p-2 rounded
                     {{ request()->routeIs('user.profile') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
                     Profile
@@ -34,7 +34,7 @@
             </li>
 
             <li>
-                <a href="{{ route('user.orders') }}"
+                <a href=""
                    class="block p-2 rounded
                     {{ request()->routeIs('user.orders') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
                     My Orders
@@ -42,7 +42,7 @@
             </li>
 
             <li>
-                <a href="{{ route('user.wishlist') }}"
+                <a href=""
                    class="block p-2 rounded
                     {{ request()->routeIs('user.wishlist') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
                     Wishlist
@@ -50,7 +50,7 @@
             </li>
 
             <li>
-                <a href="{{ route('user.reviews') }}"
+                <a href=""
                    class="block p-2 rounded
                     {{ request()->routeIs('user.reviews') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
                     My Reviews
@@ -58,7 +58,7 @@
             </li>
 
             <li>
-                <a href="{{ route('user.address') }}"
+                <a href=""
                    class="block p-2 rounded
                     {{ request()->routeIs('user.address') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
                     Address Book
@@ -66,7 +66,7 @@
             </li>
 
             <li>
-                <a href="{{ route('user.notifications') }}"
+                <a href=""
                    class="block p-2 rounded
                     {{ request()->routeIs('user.notifications') ? 'bg-blue-100 text-blue-600 font-bold' : 'text-gray-700' }}">
                     Notifications

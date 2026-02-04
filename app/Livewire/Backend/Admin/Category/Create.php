@@ -22,13 +22,13 @@ class Create extends Component
 
         Category::create([
             'name' => $this->name,
-            'slug' => Str::slug($this->name), // নাম থেকে স্লাগ তৈরি করবে
+            'slug' => Str::slug($this->name), 
             'active' => $this->active,
         ]);
 
         session()->flash('message', 'Category created successfully!');
 
-        return redirect()->route('admin.category.index'); // লিস্ট পেজে পাঠিয়ে দেবে
+        return redirect()->route('admin.category.index'); 
     }
 
     public function render()

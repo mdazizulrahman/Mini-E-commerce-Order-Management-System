@@ -9,6 +9,6 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('admin.masterCategory.Category');
+        return view('admin.master_file.Category');
     }
 }

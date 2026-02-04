@@ -12,7 +12,6 @@ class Edit extends Component
     public $name;
     public $active;
 
-    // পেজ লোড হওয়ার সময় ডাটা নিয়ে আসবে
     public function mount($id)
     {
         $category = Category::findOrFail($id);
@@ -21,7 +20,7 @@ class Edit extends Component
         $this->active = $category->active;
     }
 
-    // এই মেথডটি ব্লেড থেকে কল হবে
+    
     public function update()
     {
         $this->validate([

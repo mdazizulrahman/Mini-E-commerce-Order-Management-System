@@ -43,7 +43,7 @@
                     Category Management
                 </a>
 
-                <a href=" "
+                <a href="{{ route('admin.product.product-list') }}"
                    class="block py-2 px-3 rounded-lg hover:bg-gray-700">
                     Product Management
                 </a>

@@ -13,7 +13,7 @@ class Index extends Component
     public function toggleStatus($id)
     {
         $category = Category::findOrFail($id);
-        // 'status' এর বদলে 'active' হবে
+      
         $category->update([
             'active' => !$category->active 
         ]);

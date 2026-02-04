@@ -18,10 +18,18 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         $this->call(AdminUserSeeder::class);
         $this->call(CategoriesSeeder::class);
+        $this->call(ProductSeeder::class);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+       User::updateOrCreate(
+    ['email' => 'user@gmail.com'], // এখানে কোনো ডাবল অ্যারে হবে না
+    [
+        'name' => 'Regular User',
+        'password' => bcrypt('password'),
+        'role' => 'customer',
+        'active' => 1,
+    ]
+);
+
+
     }
 }
