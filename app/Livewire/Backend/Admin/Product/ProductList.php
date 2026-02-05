@@ -5,7 +5,7 @@ namespace App\Livewire\Backend\Admin\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Product;
-use App\Models\Category;
+
 class ProductList extends Component
 {
       use WithPagination;

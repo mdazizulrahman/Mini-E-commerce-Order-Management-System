@@ -1,12 +1,15 @@
 <?php
 
+use App\Http\Controllers\indexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\RoleMiddleware;
-use Illuminate\Support\Facades\Auth;
-Route::get('/', function () {
-    return view('welcome');
-});
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [indexController::class, 'index'])->name('frontend.index');
+
 
 Route::middleware(['auth'])->get('/dashboard', function() {
     return view('dashboard');

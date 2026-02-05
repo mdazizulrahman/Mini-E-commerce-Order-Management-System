@@ -5,6 +5,7 @@ namespace App\Livewire\Backend\Admin\Product;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\category;
+
 class ProductCreate extends Component
 {
     public $name, $price, $stock, $category_id, $status = 1;
