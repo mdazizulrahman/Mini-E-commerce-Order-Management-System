@@ -7,7 +7,7 @@
         
         @break
  @case('admin.product.product-edit')
-        {{-- এডিটের সময় কন্ট্রোলার থেকে আসা $id পাস হবে --}}
+        
         <livewire:backend.admin.product.product-edit :id="request()->route('id')" />
         @break
     @default

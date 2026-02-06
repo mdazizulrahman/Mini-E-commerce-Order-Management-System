@@ -4,6 +4,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\OrderlistController;
+use App\Http\Controllers\admin\UserlistController;
+
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function() {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
@@ -25,4 +28,16 @@ Route::prefix('Product')->name('admin.')->group(function(){
    Route::get('/admin/product/{product}/edit', [ProductController::class, 'index'])->name('product.product-edit');
  
 
+
+});
+
+
+Route::prefix('orders')->name('admin.')->group(function() {
+   
+  Route::get('/', [OrderlistController::class, 'index'])->name('order.order-list');
+});
+
+Route::prefix('users')->name('admin.')->group(function() {
+   
+    Route::get('/', [UserlistController::class, 'index'])->name('userlist');
 });

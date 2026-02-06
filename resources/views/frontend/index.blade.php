@@ -30,9 +30,10 @@
                     Stock: {{ $product->stock }}
                 </p>
 
-                <button class="mt-4 w-full bg-black text-white py-2 rounded">
-                    Add to Cart
-                </button>
+                <a href="{{ route('frontend.details', ['id' => $product->id, 'slug' => Str::slug($product->name)]) }}"
+                   class="mt-4 w-full bg-black text-white py-2 rounded hover:bg-gray-800 transition">
+                    order Now
+                </a>
             </div>
         @empty
             <p>No products available</p>

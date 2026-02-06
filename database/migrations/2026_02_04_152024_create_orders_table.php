@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->decimal('total_amount', 10, 2);
-            $table->string('status')->default('pending'); 
+            $table->string('status')->default('pending','processing','completed','cancelled'); 
             $table->timestamps();
         });
     }

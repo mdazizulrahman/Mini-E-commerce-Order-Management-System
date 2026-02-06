@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 class Create extends Component
 {
     public $name;
-    public $active = 1; // Default active
+    public $active = 1; 
 
     protected $rules = [
         'name' => 'required|min:3|unique:categories,name',

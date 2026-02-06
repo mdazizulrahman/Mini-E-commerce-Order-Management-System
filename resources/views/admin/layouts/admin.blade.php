@@ -33,7 +33,7 @@
                     Dashboard
                 </a>
 
-                <a href=""
+                <a href="{{ route('admin.userlist') }}"
                    class="block py-2 px-3 rounded-lg hover:bg-gray-700">
                     Users
                 </a>
@@ -48,7 +48,7 @@
                     Product Management
                 </a>
 
-                <a href=""
+                <a href="{{ route('admin.order.order-list') }}"
                    class="block py-2 px-3 rounded-lg hover:bg-gray-700">
                       Order Management
                 </a>
