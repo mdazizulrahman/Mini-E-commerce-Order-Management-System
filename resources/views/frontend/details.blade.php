@@ -62,12 +62,12 @@
            value="1"
            class="w-full border rounded p-2 mb-4">
 
-    <button type="submit"
-            class="w-full bg-black text-white py-3 rounded-lg font-bold hover:bg-gray-800 transition"
-            {{ $product->stock == 0 ? 'disabled' : '' }}>
-        add to cart
-    </button>
-</form>
+  
+ 
+              <a href="{{ route('direct.checkout', [$product->id, 1]) }}" 
+   class="bg-orange-500 text-white px-4 item-end py-2 rounded">
+    Order Now
+</a>
         
 
         {{-- Product Image --}}

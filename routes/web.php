@@ -4,10 +4,17 @@ use App\Http\Controllers\indexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\detailsController;
+use App\Http\Controllers\Frontend\OrderController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// কনফার্মেশন ফর্ম দেখানোর জন্য
+Route::get('/checkout/{id}/{quantity}', [OrderController::class, 'checkout'])->name('direct.checkout');
+
+// অর্ডার সেভ করার জন্য
+Route::post('/order/confirm', [OrderController::class, 'confirmOrder'])->name('order.confirm');
+
+
+
+
 
 Route::get('/', [indexController::class, 'index'])->name('frontend.index');
 
@@ -15,6 +22,7 @@ Route::get('/', [indexController::class, 'index'])->name('frontend.index');
 //     ->name('frontend.details');
 Route::get('/details/{id}/{slug}', [detailsController::class, 'details'])
     ->name('frontend.details');
+
 
 
 
