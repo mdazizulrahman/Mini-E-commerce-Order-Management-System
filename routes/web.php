@@ -5,6 +5,26 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\detailsController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\SslCommerzPaymentController;
+
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+// Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout'])->name('frontend.exampleHosted');
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
+
+
+
 
 // কনফার্মেশন ফর্ম দেখানোর জন্য
 Route::get('/checkout/{id}/{quantity}', [OrderController::class, 'checkout'])->name('direct.checkout');
@@ -26,7 +46,7 @@ Route::get('/details/{id}/{slug}', [detailsController::class, 'details'])
 
 
 
-Route::middleware(['auth'])->get('/dashboard', function() {
+Route::middleware(['auth'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
@@ -45,7 +65,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
-require __DIR__.'/customer.php';
-
+require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
+require __DIR__ . '/customer.php';
+require __DIR__ . '/console.php';

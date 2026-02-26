@@ -1,5 +1,3 @@
-
-
 @extends('frontend.layouts.app')
 
 @section('content')
@@ -28,9 +26,20 @@
                 Category: {{ $product->category->name }}
             </p>
 
-            <p class="text-2xl font-bold text-black mb-4">
-                ৳{{ number_format($product->price, 2) }}
-            </p>
+            @if($product->avatar)
+                <img src="{{ asset('storage/' . $product->avatar) }}" width="300" class="rounded">
+            @else
+                <span>No Image</span>
+            @endif
+
+            @php
+                $discount = $product->discount ?? 0;
+                $finalPrice = $product->price * (1 - $discount / 100);
+            @endphp
+
+            <p>Price: ৳{{ number_format($product->price, 2) }}</p>
+            <p>Discount: {{ $discount }}%</p>
+            <p>Final Price: ৳{{ number_format($finalPrice, 2) }}</p>
 
             <p class="text-gray-600 mb-4">
                 <strong>Stock:</strong>
@@ -49,31 +58,37 @@
             </div>
 
             {{-- Order Form --}}
-            <form method="POST" action="">
-    @csrf
+            <form method="GET" action="{{ route('direct.checkout', [$product->id, 1]) }}" id="orderForm">
+                @csrf
 
-    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
 
-    <label class="block mb-2 font-semibold">Quantity</label>
-    <input type="number"
-           name="quantity"
-           min="1"
-           max="{{ $product->stock }}"
-           value="1"
-           class="w-full border rounded p-2 mb-4">
+               
 
-  
- 
-              <a href="{{ route('direct.checkout', [$product->id, 1]) }}" 
-   class="bg-orange-500 text-white px-4 item-end py-2 rounded">
-    Order Now
-</a>
-        
+                <button type="submit" 
+                        class="bg-orange-500 text-white px-4 py-2 rounded">
+                    Order Now
+                </button>
+            </form>
 
-        {{-- Product Image --}}
-            
+            <a href="{{ route('frontend.exampleHosted') }}" 
+               class="bg-orange-500 text-white px-4 py-2 rounded mt-4 inline-block">
+                View Payment Example
+            </a>
 
         </div>
     </div>
 </div>
+
+{{-- Optional JS to dynamically update form action if needed --}}
+<script>
+    const quantityInput = document.getElementById('quantity');
+    const orderForm = document.getElementById('orderForm');
+
+    quantityInput.addEventListener('input', function() {
+        const quantity = this.value;
+        orderForm.action = `{{ url('direct/checkout/' . $product->id) }}/${quantity}`;
+    });
+</script>
+
 @endsection

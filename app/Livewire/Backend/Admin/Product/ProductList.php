@@ -5,10 +5,12 @@ namespace App\Livewire\Backend\Admin\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Product;
+use Livewire\WithFileUploads;
 
 class ProductList extends Component
 {
-      use WithPagination;
+    use WithFileUploads;
+    use WithPagination;
 
 
 

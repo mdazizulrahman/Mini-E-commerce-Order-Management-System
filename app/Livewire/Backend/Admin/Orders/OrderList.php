@@ -5,6 +5,7 @@ namespace App\Livewire\Backend\Admin\Orders;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Order;
+use Illuminate\Support\Facades\DB;
 
 class OrderList extends Component
 {
@@ -12,17 +13,14 @@ class OrderList extends Component
 
     public function updateStatus($orderId, $status)
     {
-        $order = Order::findOrFail($orderId);
-        $order->status = $status;
-        $order->save();
-
-        session()->flash('message', 'Order status updated successfully ');
+        DB::table('orders')->where('id', $orderId)->update(['status' => $status]);
+        session()->flash('message', 'Order status updated successfully.');
     }
 
     public function render()
     {
         return view('livewire.backend.admin.orders.order-list', [
-            'orders' => Order::with('user')->latest()->paginate(10),
+            'orders' => DB::table('orders')->paginate(10)
         ]);
     }
 }

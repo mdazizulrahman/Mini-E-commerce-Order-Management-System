@@ -18,6 +18,24 @@
             @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
         </div>
 
+       {{-- <div>
+    <label class="block font-medium mb-1">Image</label>
+    <input type="file" wire:model="avatar"
+        class="w-full border rounded px-3 py-2">
+    @error('avatar') 
+        <span class="text-red-500 text-sm">{{ $message }}</span> 
+    @enderror
+</div>
+
+<div>
+    <label class="block font-medium mb-1">Discount</label>
+    <input type="number" step="0.01" wire:model="discount"
+        class="w-full border rounded px-3 py-2">
+    @error('discount') 
+        <span class="text-red-500 text-sm">{{ $message }}</span> 
+    @enderror
+</div> --}}
+
         <!-- Price -->
         <div>
             <label class="block font-medium mb-1">Price</label>

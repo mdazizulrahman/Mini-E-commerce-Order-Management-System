@@ -15,8 +15,14 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->decimal('total_amount', 10, 2);
-            $table->string('status')->default('pending','processing','completed','cancelled');
-            $table->string('customer_name'); 
+            $table->enum('status', ['pending', 'processing', 'completed', 'cancelled'])
+                ->default('pending');
+            $table->string('customer_name');
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable();
+            $table->text('address')->nullable();
+            $table->string('transaction_id')->nullable(); // এই কলামটি মিসিং ছিল
+            $table->string('currency')->nullable();
             $table->timestamps();
         });
     }
